@@ -1,21 +1,11 @@
 namespace RoleplayGame
 {
-    public class Staff: IAttackItem, IDefenseItem
+    public class Staff: MagicalAttackDefenseItem
     {
-        public int AttackValue 
+        private Staff(int attack, int defense)
         {
-            get
-            {
-                return 100;
-            } 
-        }
-
-        public int DefenseValue
-        {
-            get
-            {
-                return 100;
-            }
+            this.Attack = attack;
+            this.Defense = defense;
         }
     }
 }
