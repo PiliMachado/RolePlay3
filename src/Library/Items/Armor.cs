@@ -1,13 +1,10 @@
 namespace RoleplayGame
 {
-    public class Armor: IDefenseItem
+    public class Armor: DefenseItem
     {
-        public int DefenseValue
+        private Armor(int defense)
         {
-            get
-            {
-                return 25;
-            }
+            this.Defense = defense;
         }
     }
 }
