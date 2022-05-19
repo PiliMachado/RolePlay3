@@ -1,24 +1,15 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Wizard: Character
+    public abstract class Character 
     {
-        private int health = 100;
+        public int VictoryPoints {get; set;}
+        protected int health = 100;
 
-        private List<IItem> items = new List<IItem>();
-
-        private List<IMagicalItem> magicalItems = new List<IMagicalItem>();
-
-        public Wizard(string name)
-        {
-            this.Name = name;
-            
-            this.AddItem(new Staff());
-        }
-
+        protected List<IItem> items = new List<IItem>();
         public string Name { get; set; }
         
-        public int AttackValue
+        public virtual int AttackValue
         {
             get
             {
@@ -30,18 +21,11 @@ namespace RoleplayGame
                         value += (item as IAttackItem).AttackValue;
                     }
                 }
-                foreach (IMagicalItem item in this.magicalItems)
-                {
-                    if (item is IMagicalAttackItem)
-                    {
-                        value += (item as IMagicalAttackItem).AttackValue;
-                    }
-                }
                 return value;
             }
         }
 
-        public int DefenseValue
+        public virtual int DefenseValue
         {
             get
             {
@@ -51,13 +35,6 @@ namespace RoleplayGame
                     if (item is IDefenseItem)
                     {
                         value += (item as IDefenseItem).DefenseValue;
-                    }
-                }
-                foreach (IMagicalItem item in this.magicalItems)
-                {
-                    if (item is IMagicalDefenseItem)
-                    {
-                        value += (item as IMagicalDefenseItem).DefenseValue;
                     }
                 }
                 return value;
@@ -98,16 +75,5 @@ namespace RoleplayGame
         {
             this.items.Remove(item);
         }
-
-        public void AddItem(IMagicalItem item)
-        {
-            this.magicalItems.Add(item);
-        }
-
-        public void RemoveItem(IMagicalItem item)
-        {
-            this.magicalItems.Remove(item);
-        }
-
     }
 }

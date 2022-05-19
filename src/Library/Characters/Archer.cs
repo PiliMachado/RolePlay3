@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Archer: ICharacter
+    public class Archer: Character
     {
-        private int health = 100;
-
-        private List<IItem> items = new List<IItem>();
+        protected List<IItem> items { get; set; }= new List<IItem>();
 
         public Archer(string name)
         {
@@ -14,10 +12,8 @@ namespace RoleplayGame
             this.AddItem(new Bow());
             this.AddItem(new Helmet());
         }
-
-        public string Name { get; set; }
         
-        public int AttackValue
+        public override int AttackValue
         {
             get
             {
@@ -33,7 +29,7 @@ namespace RoleplayGame
             }
         }
 
-        public int DefenseValue
+        public override int DefenseValue
         {
             get
             {
@@ -47,31 +43,6 @@ namespace RoleplayGame
                 }
                 return value;
             }
-        }
-
-        public int Health
-        {
-            get
-            {
-                return this.health;
-            }
-            private set
-            {
-                this.health = value < 0 ? 0 : value;
-            }
-        }
-
-        public void ReceiveAttack(int power)
-        {
-            if (this.DefenseValue < power)
-            {
-                this.Health -= power - this.DefenseValue;
-            }
-        }
-
-        public void Cure()
-        {
-            this.Health = 100;
         }
 
         public void AddItem(IItem item)
