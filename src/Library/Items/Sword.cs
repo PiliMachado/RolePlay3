@@ -2,7 +2,7 @@ namespace RoleplayGame
 {
     public class Sword: AttackItem
     {
-        private Sword(int ataque)
+        public Sword(int ataque)
         {
             this.Attack = ataque;
         }

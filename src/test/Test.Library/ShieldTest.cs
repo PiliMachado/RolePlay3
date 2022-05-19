@@ -3,7 +3,7 @@ using RoleplayGame;
 
 namespace Test.Library
 {
-    public class ArmorTest
+    public class ShieldTest
     {
         
         [SetUp]
@@ -16,20 +16,20 @@ namespace Test.Library
             poder confirmar que el setter funciona correctamente
         */
         [Test]
-        public void ArmorDefenseValueTest()
+        public void ShieldDefenseValueTest()
         {
-            Armor armor = new Armor(50);
-            Assert.AreEqual(armor.Defense, 50);
+            Shield shield = new Shield(35);
+            Assert.AreEqual(shield.Defense, 35);
         }
         /*
             Es necesiario probar la asiganción de una defensa invalida para 
             poder confirmar que el setter funciona correctamente 
         */
         [Test]
-        public void ArmorDefenseInvalidTest()
+        public void ShieldDefenseInvalidTest()
         {
-            Armor armor = new Armor(-35);
-            Assert.AreEqual(armor.Defense, 0);
+            Shield shield = new Shield(-40);
+            Assert.AreEqual(shield.Defense, 0);
         }
 
     }
