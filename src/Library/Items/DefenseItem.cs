@@ -3,22 +3,22 @@ namespace RoleplayGame
 public class DefenseItem : IItem
     {
 
-        protected int Defense;
-        public int DefenseValue
+        protected int defense;
+        public int Defense
         {
             get
             {
-                return this.Defense;
+                return this.defense;
             }
             set
             {
                 if(value >=0)
                 {
-                    this.Defense = value;
+                    this.defense = value;
                 }
                 else
                 {
-                    this.Defense = 0;
+                    this.defense = 0;
                 } 
             }
         }

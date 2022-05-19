@@ -3,22 +3,22 @@ namespace RoleplayGame
 public class AttackItem : IItem
     {
 
-        protected int Attack;
-        public int AttackValue
+        protected int attack;
+        public int Attack
         {
             get
             {
-                return this.Attack;
+                return this.attack;
             }
             set
             {
                 if(value >=0)
                 {
-                    this.Attack = value;
+                    this.attack = value;
                 }
                 else
                 {
-                    this.Attack = 0;
+                    this.attack = 0;
                 } 
             }
         }
