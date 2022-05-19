@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Knight: Character, IHero
+    public class ShadowGnome: Character, IEnemy
     {
-        public Knight(string name)
+        public ShadowGnome(string name)
         {
             this.Name = name;
         }
