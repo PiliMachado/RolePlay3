@@ -1,7 +1,7 @@
 using System;
 namespace RoleplayGame
 {
-    public interface IHero
+    public interface IEnemy
     {
         int VictoryPoints { get; set; }
     }

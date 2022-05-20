@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Wizard: MagicCharacter
+    public class Wizard: MagicCharacter, IHero
     {
         public Wizard(string name)
         {

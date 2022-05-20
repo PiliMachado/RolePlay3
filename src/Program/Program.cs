@@ -28,6 +28,15 @@ namespace Program
 
             Console.WriteLine($"Someone cured Gimli. Gimli now has ❤️ {gimli.Health}");
             */
+            Archer archer = new Archer("archer");
+            DarkElf darkelf = new DarkElf("darkelf");
+            Dwarf dwarf = new Dwarf("dwarf");
+            Knight knight = new Knight("knight");
+            Ogre ogre = new Ogre("ogre");
+            ShadowGnome shadowgnome = new ShadowGnome("shadowgnome");
+            Undead undead = new Undead("undead");
+            Wizard wizard = new Wizard("wizard");
+            
         }
     }
 }
