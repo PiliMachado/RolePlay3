@@ -3,6 +3,6 @@ namespace RoleplayGame
 {
     public interface IEnemy
     {
-        public int VictoryPoints { get; protected set;}
+        int VictoryPoints { get; set;}
     }
 }
