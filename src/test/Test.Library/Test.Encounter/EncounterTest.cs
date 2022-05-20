@@ -21,7 +21,7 @@ namespace Test.Library
 
                 string expected = "Missing characters to start encounter.";
 
-                Assert.That(sw.ToString().Replace("\r\n", ""), Is.EqualTo(expected));
+                Assert.That(sw.ToString().Replace("\r\n", ""), Is.EqualTo(expected.Replace("\r\n", "")));
             }
         }
 
@@ -43,7 +43,7 @@ namespace Test.Library
 
                 string expected = "The heroes won!";
 
-                Assert.That(sw.ToString().Replace("\r\n", ""), Is.EqualTo(expected));
+                Assert.That(sw.ToString().Replace("\r\n", ""), Is.EqualTo(expected.Replace("\r\n", "")));
                 Assert.AreEqual(0, encounter.Villians.Count);
                 Assert.AreEqual(1, encounter.Heroes.Count);
             }
@@ -67,7 +67,7 @@ namespace Test.Library
 
                 string expected = "The villains won!";
 
-                Assert.That(sw.ToString().Replace("\r\n", ""), Is.EqualTo(expected));
+                Assert.That(sw.ToString().Replace("\r\n", ""), Is.EqualTo(expected.Replace("\r\n", "")));
                 Assert.AreEqual(1, encounter.Villians.Count);
                 Assert.AreEqual(0, encounter.Heroes.Count);
             }
