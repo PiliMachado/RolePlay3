@@ -2,7 +2,7 @@ namespace RoleplayGame
 {
     public class Helmet: DefenseItem
     {
-        private Helmet(int defense)
+        public Helmet(int defense)
         {
             this.Defense = defense;
         }

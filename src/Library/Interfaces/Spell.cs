@@ -1,6 +1,6 @@
 namespace RoleplayGame
 {
-    public class MagicalAttackDefenseItem
+    public class Spell
     {
         protected int attack;
         public virtual int Attack
