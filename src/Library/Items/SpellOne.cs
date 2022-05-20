@@ -4,8 +4,8 @@ namespace RoleplayGame
     {
         public SpellOne(int attack, int defense)
         {
-            this.Attack = attack;
-            this.Defense = defense;
+            this.AttackValue = attack;
+            this.DefenseValue = defense;
         }
     }
 }
