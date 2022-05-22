@@ -3,7 +3,7 @@ namespace RoleplayGame
 {
     public abstract class Character 
     {
-        public int VictoryPoints {get; set;}
+        public int VictoryPoints { get; set; } = 0;
         protected int health = 100;
 
         protected List<IItem> items = new List<IItem>();
@@ -16,9 +16,9 @@ namespace RoleplayGame
                 int value = 0;
                 foreach (IItem item in this.items)
                 {
-                    if (item is IAttackItem)
+                    if (item is AttackItem)
                     {
-                        value += (item as IAttackItem).AttackValue;
+                        value += (item as AttackItem).Attack;
                     }
                 }
                 return value;
@@ -32,9 +32,9 @@ namespace RoleplayGame
                 int value = 0;
                 foreach (IItem item in this.items)
                 {
-                    if (item is IDefenseItem)
+                    if (item is DefenseItem)
                     {
-                        value += (item as IDefenseItem).DefenseValue;
+                        value += (item as DefenseItem).Defense;
                     }
                 }
                 return value;

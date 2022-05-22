@@ -4,8 +4,9 @@ namespace RoleplayGame
 {
     public class Encounter
     {
-        private List<Character> villians { get; set; }
-        private List<Character> heroes { get; set; }
+        private List<Character> villians { get; set; } = new List<Character>();
+        private List<Character> heroes { get; set; } = new List<Character>();
+        public bool done { get; set; }
         public Encounter(List<Character> players)
         {
             foreach(Character character in players)
@@ -22,20 +23,24 @@ namespace RoleplayGame
         }
         public void RemoveDeadCharacters()
         {
+            List<Character> aliveheroes = new List<Character>();
+            List<Character> aliveenemies = new List<Character>();
             foreach(Character character in this.heroes)
             {
-                if(!(character.Health > 0))
+                if((character.Health > 0))
                 {
-                    this.heroes.Remove(character);
+                    aliveheroes.Add(character);
                 }
             }
             foreach(Character character in this.villians)
             {
-                if(!(character.Health > 0))
+                if((character.Health > 0))
                 {
-                    this.villians.Remove(character);
+                    aliveenemies.Add(character);
                 }
             }
+            this.heroes = aliveheroes;
+            this.villians = aliveenemies;
         }
         public void DoEncounter()
         {
@@ -45,21 +50,46 @@ namespace RoleplayGame
                 {
                     this.RemoveDeadCharacters();
                     int order = this.heroes.Count;
+                    int counter = 0;
                     foreach(Character villian in this.villians) // Recorremos la lista de villanos.
                     {
-                        if(order > 0) // Verificamos atacar en el orden previsto.
+                        if(this.heroes.Count >= this.villians.Count)
                         {
-                            heroes[heroes.Count - order].ReceiveAttack(villian.AttackValue);
-                            order -= 1;
+                            if(order > 0) // Verificamos atacar en el orden previsto.
+                            {
+                                heroes[heroes.Count - order].ReceiveAttack(villian.AttackValue);
+                                Console.WriteLine($"{heroes[heroes.Count - order].Name} was attacked");
+                                order -= 1;
+                            }
+                            else if(order == 0) // Para evitar errores de fuera de index.
+                            {
+                                heroes[0].ReceiveAttack(villian.AttackValue);
+                                Console.WriteLine($"{heroes[0].Name} was attacked");
+                                order = heroes.Count;
+                            }
                         }
-                        else if(order == 0) // Para evitar errores de fuera de index.
+                        else
                         {
-                            heroes[heroes.Count].ReceiveAttack(villian.AttackValue);
-                            order -= 1;
-                        }
-                        else // Cuando ya se halla pasado por toda la lista, si siguen habiendo villanos se atacara devuelta a los primeros en orden.
-                        {
-                            order = heroes.Count;
+                            if(order > 0) // Verificamos atacar en el orden previsto.
+                            {
+                                heroes[heroes.Count - order].ReceiveAttack(villian.AttackValue);
+                                Console.WriteLine($"{heroes[heroes.Count - order].Name} was attacked");
+                                if(counter == 1)
+                                {
+                                    order -= 1;
+                                    counter = 0;
+                                }
+                                else
+                                {
+                                    counter += 1;
+                                }
+                            }
+                            else if(order == 0) // Para evitar errores de fuera de index.
+                            {
+                                heroes[0].ReceiveAttack(villian.AttackValue);
+                                Console.WriteLine($"{heroes[0].Name} was attacked");
+                                order = heroes.Count;
+                            }
                         }
                     }
 
@@ -84,15 +114,18 @@ namespace RoleplayGame
                 if(this.heroes.Count > 0) // Dependiendo de que lista ya no tenga mas characters se declarara vencedor a los heroes o villanos.
                 {
                     Console.WriteLine("The heroes won!");
+                    this.done = true;
                 }
                 else
                 {
                     Console.WriteLine("The villians won!");
+                    this.done = true;
                 }
             }
             else
             {
                 Console.WriteLine("Missing characters to start encounter.");
+                this.done = false;
             }
         }
     }

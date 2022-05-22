@@ -2,22 +2,22 @@ namespace RoleplayGame
 {
     public class MagicalDefenseItem: IMagicalItem
     {
-        protected int Defense;
-        public virtual int DefenseValue
+        protected int defense;
+        public virtual int Defense
         {
             get
             {
-                return this.Defense;
+                return this.defense;
             }
             set
             {
                 if(value >=0)
                 {
-                    this.Defense = value;
+                    this.defense = value;
                 }
                 else
                 {
-                    this.Defense = 0;
+                    this.defense = 0;
                 } 
             }
         }
