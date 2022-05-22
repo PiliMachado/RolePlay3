@@ -1,10 +1,12 @@
 using NUnit.Framework;
 using RoleplayGame;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Test.Library
 {
-    public class EncounterTest
+    public class EncounterPatternTests
     {
         
         [SetUp]
@@ -12,24 +14,6 @@ namespace Test.Library
         {
             
         }
-
-        /// <summary>
-        /// Probamos que si hay una cantidad invalida de characters (es decir no hay almenos un enemigo
-        /// y un heroe), que el encounter no ocurriera.
-        /// </summary>
-        [Test]
-        public void InvalidAmountOfCharactersTest()
-        {
-            Archer archer = new Archer("archer");
-            Dwarf dwarf = new Dwarf("dwarf");
-            List<Character> characters = new List<Character>();
-            characters.Add(archer);
-            characters.Add(dwarf);
-            Encounter encounter = new Encounter(characters);
-            encounter.DoEncounter();
-            Assert.AreEqual(encounter.done, false);
-        }
-
         /// <summary>
         /// Probamos que si hay multiples enemigos y un unico heroe, los enemigos le peguen cada uno
         /// al mismo heroe, esto se puede verificar dandole un ataque muy elevado al heroe y el daño justo a los enemigos, que en caso
@@ -70,8 +54,8 @@ namespace Test.Library
         public void MultipleEnemiesMultipleHeroesTest()
         {
             Archer archer = new Archer("archer");
-            Archer archer2 = new Archer("archer");
-            Archer archer3 = new Archer("archer");
+            Archer archer2 = new Archer("archer2");
+            Archer archer3 = new Archer("archer3");
             Ogre ogre = new Ogre("ogre");
             ShadowGnome shadowgnome = new ShadowGnome("shadowgnome");
             Undead undead = new Undead("undead");

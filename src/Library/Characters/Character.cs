@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 namespace RoleplayGame
 {
     public abstract class Character 
@@ -6,7 +7,15 @@ namespace RoleplayGame
         public int VictoryPoints { get; set; } = 0;
         protected int health = 100;
 
-        protected List<IItem> items = new List<IItem>();
+        private List<IItem> items = new List<IItem>();
+        public List<IItem> Items {
+            get{
+                return new List<IItem>(this.items);
+            }
+            protected set{
+                this.items = value;
+            }
+        }
         public string Name { get; set; }
         
         public virtual int AttackValue
@@ -68,12 +77,12 @@ namespace RoleplayGame
 
         public void AddItem(IItem item)
         {
-            this.items.Add(item);
+            if(!this.Items.Contains(item)) this.items.Add(item);
         }
 
         public void RemoveItem(IItem item)
         {
-            this.items.Remove(item);
+            if(this.Items.Contains(item)) this.items.Remove(item);
         }
     }
 }

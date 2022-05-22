@@ -9,7 +9,7 @@ namespace RoleplayGame
             get
             {
                 int value = 0;
-                foreach (IItem item in this.items)
+                foreach (IItem item in this.Items)
                 {
                     if (item is AttackItem)
                     {
@@ -36,7 +36,7 @@ namespace RoleplayGame
             get
             {
                 int value = 0;
-                foreach (IItem item in this.items)
+                foreach (IItem item in this.Items)
                 {
                     if (item is DefenseItem)
                     {

@@ -19,7 +19,7 @@ namespace Test.Library
         public void SpellOneDefenseValueTest()
         {
             SpellOne spellOne = new SpellOne(0, 50);
-            Assert.AreEqual(spellOne.Defense, 50);
+            Assert.AreEqual(spellOne.DefenseValue, 50);
         }
         /*
             Es necesiario probar la asiganción de una defensa invalida para 
@@ -29,7 +29,7 @@ namespace Test.Library
         public void SpellOneDefenseInvalidTest()
         {
             SpellOne spellOne = new SpellOne(0, -35);
-            Assert.AreEqual(spellOne.Defense, 0);
+            Assert.AreEqual(spellOne.DefenseValue, 0);
         }
         /*
             Es necesiario probar la asignación de un ataque valido para
@@ -39,7 +39,7 @@ namespace Test.Library
         public void SpellOneAttackValueTest()
         {
             SpellOne spellOne = new SpellOne(45, 0);
-            Assert.AreEqual(spellOne.Attack, 45);
+            Assert.AreEqual(spellOne.AttackValue, 45);
         }
         /*
             Es necesiario probar la asiganción de un ataque invalido para 
@@ -49,7 +49,7 @@ namespace Test.Library
         public void SpellOneAttackInvalidTest()
         {
             SpellOne spellOne = new SpellOne(-15, 0);
-            Assert.AreEqual(spellOne.Attack, 0);
+            Assert.AreEqual(spellOne.AttackValue, 0);
         }
     }
 }
