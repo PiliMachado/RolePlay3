@@ -1,9 +1,9 @@
 namespace RoleplayGame
 {
-    public class Spell
+    public abstract class Spell : IMagicalAttackItem, IMagicalDefenseItem
     {
         protected int attack;
-        public virtual int Attack
+        public virtual int AttackValue
         {
             get
             {
@@ -23,7 +23,7 @@ namespace RoleplayGame
         }
 
         protected int defense;
-        public virtual int Defense
+        public virtual int DefenseValue
         {
             get
             {
@@ -41,5 +41,7 @@ namespace RoleplayGame
                 } 
             }
         }
+
+
     }
 }
