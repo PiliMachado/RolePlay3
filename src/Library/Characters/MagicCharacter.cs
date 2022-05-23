@@ -8,12 +8,23 @@ namespace RoleplayGame
         {
             get
             {
-                int value = base.AttackValue;
+                int value = 0;
+                foreach (IItem item in this.Items)
+                {
+                    if (item is AttackItem)
+                    {
+                        value += (item as AttackItem).Attack;
+                    }
+                }
                 foreach (IMagicalItem item in this.magicItems)
                 {
-                    if (item is IMagicalAttackItem)
+                    if (item is MagicalAttackItem)
                     {
-                        value += (item as IMagicalAttackItem).AttackValue;
+                        value += (item as MagicalAttackItem).Attack;
+                    }
+                    else if (item is MagicalAttackDefenseItem)
+                    {
+                        value += (item as MagicalAttackDefenseItem).Attack;
                     }
                 }
                 return value;
@@ -24,13 +35,19 @@ namespace RoleplayGame
         {
             get
             {
-                int value = base.DefenseValue;
-                
+                int value = 0;
+                foreach (IItem item in this.Items)
+                {
+                    if (item is DefenseItem)
+                    {
+                        value += (item as DefenseItem).Defense;
+                    }
+                }
                 foreach (IMagicalItem item in this.magicItems)
                 {
-                    if (item is IMagicalDefenseItem)
+                    if (item is MagicalDefenseItem)
                     {
-                        value += (item as IMagicalDefenseItem).DefenseValue;
+                        value += (item as MagicalDefenseItem).Defense;
                     }
                 }
                 return value;

@@ -5,8 +5,8 @@ namespace RoleplayGame
 {
     public class Encounter: IEncounter
     {
-        public List<Character> Villians { get; private set; }
-        public List<Character> Heroes { get; private set; }
+        public List<Character> Villians { get; private set; } = new List<Character>();
+        public List<Character> Heroes { get; private set; } = new List<Character>();
 
         public Encounter(List<Character> players)
         {
@@ -34,12 +34,35 @@ namespace RoleplayGame
             {
                 this.RemoveDeadCharacters();
                 int index = 0;
-                foreach(Character villian in this.Villians) // Recorremos la lista de villanos.
+                if(Villians.Count <= Heroes.Count)
                 {
-                    Character heroe = this.Heroes[index];
-                    heroe.ReceiveAttack(villian.AttackValue);
-                    index++;
-                    if(index >= this.Heroes.Count) index = 0;
+                    foreach(Character villian in this.Villians) // Recorremos la lista de villanos.
+                    {
+                        Character heroe = this.Heroes[index];
+                        heroe.ReceiveAttack(villian.AttackValue);
+                        index++;    
+                        if(index >= this.Heroes.Count) index = 0;
+                    }
+                }
+                else
+                {
+                    int counter = 0;
+                    foreach(Character villian in this.Villians) // Recorremos la lista de villanos.
+                    {
+                        Character heroe = this.Heroes[index];
+                        heroe.ReceiveAttack(villian.AttackValue);
+                        if(counter == 1)
+                        {
+                            index++;
+                            counter = 0;
+                        }
+                        else
+                        {
+                            counter += 1;
+                        }
+                        
+                        if(index >= this.Heroes.Count) index = 0;
+                    }
                 }
 
                 this.RemoveDeadCharacters();

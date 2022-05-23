@@ -4,7 +4,7 @@ namespace RoleplayGame
 {
     public abstract class Character 
     {
-        public int VictoryPoints {get; set;}
+        public int VictoryPoints { get; set; } = 0;
         protected int health = 100;
 
         private List<IItem> items = new List<IItem>();

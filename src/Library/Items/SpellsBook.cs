@@ -2,16 +2,15 @@ using System.Collections.Generic;
 
 namespace RoleplayGame
 {
-    public class SpellsBook: IMagicalItem
+    public class SpellsBook: MagicalAttackDefenseItem
     {
-        private List<Spell> spells = new List<Spell>();
-        
-        public int AttackValue
+        public List<Spell> Spells { get; set; } = new List<Spell>();
+        public override int Attack
         {
             get
             {
                 int value = 0;
-                foreach (Spell spell in this.spells)
+                foreach (Spell spell in this.Spells)
                 {
                     value += spell.AttackValue;
                 }
@@ -19,12 +18,12 @@ namespace RoleplayGame
             }
         }
 
-        public int DefenseValue
+        public override int Defense
         {
             get
             {
                 int value = 0;
-                foreach (Spell spell in this.spells)
+                foreach (Spell spell in this.Spells)
                 {
                     value += spell.DefenseValue;
                 }
@@ -34,12 +33,12 @@ namespace RoleplayGame
 
         public void AddSpell(Spell spell)
         {
-            this.spells.Add(spell);
+            this.Spells.Add(spell);
         }
 
         public void RemoveSpell(Spell spell)
         {
-            this.spells.Remove(spell);
+            this.Spells.Remove(spell);
         }
     }
 }

@@ -75,7 +75,5 @@ namespace Test.Library
                 Assert.AreEqual(0, encounter.Heroes.Count);
             }
         }
-
-    
     }
 }
